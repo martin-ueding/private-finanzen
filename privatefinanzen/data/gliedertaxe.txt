@@ -1,0 +1,27 @@
+"A" "B" "C" "D"
+"Arm" 70 85 80 80
+"Am oberhalb" 65 80 70 70
+"Arm unterhalb" 60 75 70 75
+"Hand" 55 70 70 70
+"Daumen" 20 30 30 30
+"Zeigefinger" 10 20 20 20
+"Finger" 5 15 15 15
+"Bein über Mitte" 70 85 80 80
+"Bein unter Mitte" 60 80 70 75
+"Bein unterhalb Knie" 50 75 70 65
+"Bein bis Mitte Unterschenkel" 45 70 70 60
+"Fuß" 40 60 70 50
+"große Zehe" 5 15 10 15
+"Zehe" 2 8 5 5
+"Auge" 50 60 80 60
+"Gehör ein Ohr" 30 50 40 40
+"Geruchssinn" 10 15 15 15
+"Geschmackssinn" 5 10 10 15
+"Stimme" 100 100 100 100
+"eine Niere" 15 NA 25 25
+"zwei Nieren" 100 NA 100 100
+"Milz" 5 NA 10 10
+"Gallenblase" NA NA 10 10
+"Magen" NA NA 20 20
+"Darm" NA NA 25 25
+"Lungenflügel" NA NA 50 50

@@ -17,22 +17,8 @@ entwicklung <- data.frame(t(entwicklung), row.names=rendite)
 colnames(entwicklung) <- jahre
 print(entwicklung)
 
-#barplot(t(as.matrix(entwicklung)), beside=TRUE, names.arg=rendite.txt, legend.text=jahre)
-
 wert <- apply(vl * entwicklung, 1, function (row) sum(row[1:3]))
 print(wert)
-
-barplot(t(as.matrix(wert - kosten * 7)),
-        beside=TRUE, names.arg=rendite.txt,
-        col=c('red', rep('black', 6)),
-        main='Gesamtgewinn nach 7 Jahren bei 3 Jahren VL (3,33 EUR/Monat)\nund 12 EUR/Jahr Depotkosten',
-        xlab='Jährliche Fondsentwicklung',
-        ylab='Gesamtgewinn / EUR')
-
-library(ggplot2)
-library(reshape2)
-
-theme_set(theme_bw())
 
 gewinn <- wert - kosten * 7
 
@@ -45,7 +31,7 @@ ggplot(gg.gewinn, aes(x=rendite, y=gewinn)) +
          y='Gewinn',
          title='Gesamtgewinn nach 7 Jahren bei 3 Jahren VL',
          subtitle='VL = 3,33 EUR/Monat, Depotkosten = 12 EUR/Jahr')
-my.ggsave('plot-gesamtgewinn-doktorand.svg')
+my.ggsave('vl-gesamtgewinn-doktorand.svg')
 
 v <- function(p, k, n) {
     p1 <- 1 + p
