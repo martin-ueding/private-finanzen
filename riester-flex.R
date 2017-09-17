@@ -36,9 +36,9 @@ makeplots <- function(bruttoeinkommen, kinder) {
     gathered = gather(df.eigenanteil,
                       value = 'value', key = 'type',
                       erlass, zulage)
-    p <- ggplot(gathered, aes(x = eigenanteil, y = value, color = type)) +
+    p <- ggplot(gathered, aes(x = einzahlungen, y = value, color = type)) +
         geom_line() +
-        geom_line(aes(x = eigenanteil, y = vorteil), color = 'black', size = 2, alpha = 0.2) +
+        geom_line(aes(x = einzahlungen, y = vorteil), color = 'black', size = 2, alpha = 0.2) +
         abline.4.prozent + abline.2100 +
         labs(x = 'Einzahlungen / Jahr EUR', y = 'Vorteil / Jahr EUR',
              title = 'Zulage und Steuervorteil',
@@ -47,7 +47,7 @@ makeplots <- function(bruttoeinkommen, kinder) {
     my.ggsave(sprintf('riester-vorteil-%d-%d', bruttoeinkommen, kinder))
     print(p)
 
-    p <- ggplot(df.eigenanteil, aes(x = eigenanteil, y = rendite)) +
+    p <- ggplot(df.eigenanteil, aes(x = einzahlungen, y = rendite)) +
         geom_line() +
         abline.4.prozent + abline.2100 +
         labs(x = 'Einzahlungen / Jahr EUR', y = 'Vorteil / Eigenanteil',

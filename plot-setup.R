@@ -13,3 +13,5 @@ my.ggsave <- function(filename, ...) {
     ggsave(paste('output/', filename, '.svg', sep = ''), width = 5, height = 4, ...)
     ggsave(paste('output/', filename, '.png', sep = ''), width = 5, height = 4, dpi = 150, ...)
 }
+
+pdf(width = 7, height = 4)
