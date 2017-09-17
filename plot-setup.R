@@ -10,5 +10,6 @@ my.ggsave <- function(filename, ...) {
     if (!dir.exists('output')) {
         dir.create('output')
     }
-    ggsave(paste('output', filename, sep = '/'), width = 5, height = 4, ...)
+    ggsave(paste('output/', filename, '.svg', sep = ''), width = 5, height = 4, ...)
+    ggsave(paste('output/', filename, '.png', sep = ''), width = 5, height = 4, dpi = 150, ...)
 }
