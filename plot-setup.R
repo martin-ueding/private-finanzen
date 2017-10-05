@@ -1,6 +1,5 @@
 library(ggplot2)
 library(tidyr)
-library(reshape2)
 
 plotopts <- list(svg = list(width=6, height=4))
 
@@ -11,6 +10,7 @@ my.ggsave <- function(filename, ...) {
         dir.create('output')
     }
     ggsave(paste('output/', filename, '.svg', sep = ''), width = 5, height = 4, ...)
+    ggsave(paste('output/', filename, '.pdf', sep = ''), width = 5, height = 4, ...)
     ggsave(paste('output/', filename, '.png', sep = ''), width = 5, height = 4, dpi = 150, ...)
 }
 

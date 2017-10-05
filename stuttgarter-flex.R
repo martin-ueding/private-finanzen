@@ -8,23 +8,10 @@ kosten.vertrieb <- 20.46
 kosten.sonst <- 32.46
 pkosten.sonst <- 0.0048
 
-einzahlung <- c(rep(25, 41 * 12 + 5), rep(0, 12 * 20))
+einzahlung <- c(rep(25, 41 * 12), rep(0, 12 * 10))
 monat <- 1:length(einzahlung)
 
-einzahlung <- einzahlung * 1.05^((1:length(einzahlung) - 1) / 12)
-
-renditen <- c(0, 3, 6)
-rendite.wort <- function(name, rendite) sprintf('%s.%i', name, rendite)
-
-erzeuge.streuung <- function(name, len) {
-    r <- list()
-
-    for (rendite in renditen) {
-        r[[rendite.wort(name, rendite)]] <- rep(0, len)
-    }
-
-    return (r)
-}
+#einzahlung <- einzahlung * 1.05^((1:length(einzahlung) - 1) / 12)
 
 guthaben <- erzeuge.streuung('guthaben', length(monat))
 kosten <- erzeuge.streuung('kosten', length(monat))
@@ -68,12 +55,16 @@ cols <- c(list(monat = monat,
           guthaben)
 
 df <- do.call('data.frame', cols)
-
-print(df)
-cat('\n')
-print(df[41 * 12 + 5, ])
-
 write.table(df, file='output/stuttgarter-flex.tsv')
+
+data.2057 <- df[41 * 12 + 5, ]
+print(data.2057)
+
+steuersatz <- (0.25 * 1.05) / 2
+auszahlung.3 <- data.2057$guthaben.3 - (data.2057$guthaben.3 - data.2057$eigenbeitrag.accum) * steuersatz
+auszahlung.6 <- data.2057$guthaben.6 - (data.2057$guthaben.6 - data.2057$eigenbeitrag.accum) * steuersatz
+cat('Auszahlung im Jahr 2057 bei 3% Rendite: ', auszahlung.3, '\n')
+cat('Auszahlung im Jahr 2057 bei 6% Rendite: ', auszahlung.6, '\n')
 
 df2 <- gather(df, value = 'value', key = 'type',
               einzahlung, kosten.0, kosten.3, kosten.6)
